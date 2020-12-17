@@ -1,1 +1,2 @@
-# rsp-skill-test
+# RSP Skill Test 
+## Room Booking API
