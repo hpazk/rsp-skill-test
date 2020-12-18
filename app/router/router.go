@@ -21,7 +21,6 @@ func Router(e *echo.Echo) {
 	// api.GET("/rooms", handler.GetRooms)
 	// api.GET("/bookings", handler.GetBookings)
 
-	// e.GET("/register", func(ctx echo.Context) (err error) {
-	// 	return ctx.String(http.StatusOK, "Hello World!")
-	// })
+	// Test
+	api.GET("/books", handler.GetBooks)
 }
