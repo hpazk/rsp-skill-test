@@ -5,19 +5,19 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-// // BookStore Controller is...
-// func BookStore(ctx echo.Context) error {
-// 	book := models.Book{}
-// 	book.Author = ctx.FormValue("author")
-// 	book.Title = ctx.FormValue("title")
-// 	book.Rating = ctx.FormValue("rating")
+// BookStore Controller is...
+func BookStore(ctx echo.Context) error {
+	book := models.Book{}
+	book.Name = ctx.FormValue("name")
+	book.Age = ctx.FormValue("age")
+	book.Address = ctx.FormValue("address")
 
-// 	res := models.BookInsert(&book)
-// 	if res {
-// 		return ctx.JSON(201, book)
-// 	}
-// 	return ctx.JSON(400, "Bad Request")
-// }
+	res := models.BookInsert(&book)
+	if res {
+		return ctx.JSON(201, book)
+	}
+	return ctx.JSON(400, "Bad Request")
+}
 
 // BookList is...
 func BookList(ctx echo.Context) error {

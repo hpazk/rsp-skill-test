@@ -1,9 +1,9 @@
 package main
 
 import (
-	database "github.com/hpazk/rsp-skill-test/app/database"
+	"github.com/hpazk/rsp-skill-test/app/database"
 	"github.com/hpazk/rsp-skill-test/app/models"
-	router "github.com/hpazk/rsp-skill-test/app/router"
+	"github.com/hpazk/rsp-skill-test/app/router"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"

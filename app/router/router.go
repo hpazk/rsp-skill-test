@@ -48,10 +48,23 @@ func Router(e *echo.Echo) {
 		// 	return ctx.JSON(http.StatusOK, result)
 		// })
 		books.GET("", controllers.BookList)
-		books.POST("", func(ctx echo.Context) error {
-			book := models.Book{Name: "Xor", Age: 18, Address: "Smi"}
+		// books.POST("", func(ctx echo.Context) error {
+		// 	book := models.Book{Name: "Xor", Age: 18, Address: "Smi"}
 
-			result := database.DBConn().Create(&book) // pass pointer of data to Create
+		// 	result := database.DBConn().Create(&book) // pass pointer of data to Create
+
+		// 	return ctx.JSON(http.StatusOK, result)
+		// })
+		books.POST("", controllers.BookStore)
+		books.DELETE("", func(ctx echo.Context) error {
+			book := models.Book{}
+			result := database.DB.Where(models.Book{ID: 47}).Delete(&book)
+			return ctx.JSON(http.StatusOK, result)
+		})
+
+		books.GET("/softdelete", func(ctx echo.Context) error {
+			book := models.Book{}
+			result := database.DB.Unscoped().Where(models.Book{ID: 47}).Find(&book)
 
 			return ctx.JSON(http.StatusOK, result)
 		})

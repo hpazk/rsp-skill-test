@@ -1,28 +1,45 @@
 package models
 
 import (
+	"time"
+
 	"github.com/hpazk/rsp-skill-test/app/database"
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 // Book struct is...
 type Book struct {
-	gorm.Model
-	Name    string
-	Age     uint8
-	Address string
+	// gorm.Model
+	ID        uint
+	Name      string
+	Age       string
+	Address   string
+	CreatedAt time.Time      `json:"created_at"  gorm:"time"`
+	UpdatedAt time.Time      `json:"updated_at" gorm:"time"`
+	DeletedAt gorm.DeletedAt `json:"deleted_at" gorm:"time"`
+	// DeletedAt time.Time `json:"deleted_at"`
 }
 
-// // BookInsert is...
-// func BookInsert(book *Book) bool {
-// 	res := database.DBConn.Create(&book)
-
-// 	if res.Error == nil {
-// 		return true
-// 	}
-
-// 	return false
+// type Book struct {
+// ID        uint      `json:"id" gorm:"primaryKey"`
+// Name      string    `json:"name"`
+// Age       string    `json:"age"`
+// Address   string    `json:"address"`
+// CreatedAt time.Time `json:"created_at"`
+// UpdatedAt time.Time `json:"updated_at"`
+// DeletedAt time.Time `json:"deleted_at"`
 // }
+
+// BookInsert is...
+func BookInsert(book *Book) bool {
+	res := database.DB.Create(&book)
+
+	if res.Error == nil {
+		return true
+	}
+
+	return false
+}
 
 // // BookList is...
 // func BookList() []Book {
