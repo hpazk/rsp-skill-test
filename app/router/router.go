@@ -3,8 +3,9 @@ package router
 import (
 	"net/http"
 
+	"github.com/hpazk/rsp-skill-test/app/controllers"
 	"github.com/hpazk/rsp-skill-test/app/database"
-	handler "github.com/hpazk/rsp-skill-test/app/handler"
+	"github.com/hpazk/rsp-skill-test/app/handler"
 	"github.com/hpazk/rsp-skill-test/app/models"
 	"github.com/labstack/echo/v4"
 )
@@ -38,14 +39,15 @@ func Router(e *echo.Echo) {
 	// Test
 	books := api.Group("/books")
 	{
-		books.GET("", func(ctx echo.Context) error {
-			var books []models.Book
-			// Get all records
-			result := database.DBConn().Find(&books)
+		// books.GET("", func(ctx echo.Context) error {
+		// 	var books []models.Book
+		// 	// Get all records
+		// 	result := database.DBConn().Find(&books)
 
-			// res := models.Response{Code: 200, Data: books, Message: "Success"}
-			return ctx.JSON(http.StatusOK, result)
-		})
+		// 	// res := models.Response{Code: 200, Data: books, Message: "Success"}
+		// 	return ctx.JSON(http.StatusOK, result)
+		// })
+		books.GET("", controllers.BookList)
 		books.POST("", func(ctx echo.Context) error {
 			book := models.Book{Name: "Xor", Age: 18, Address: "Smi"}
 

@@ -1,6 +1,7 @@
 package models
 
 import (
+	"github.com/hpazk/rsp-skill-test/app/database"
 	"github.com/jinzhu/gorm"
 )
 
@@ -33,12 +34,13 @@ type Book struct {
 // 	return nil
 // }
 
-// // BookFetchAll is...
-// func BookFetchAll() []Book {
-// 	books := []Book{}
-// 	res := database.DBConn.Debug().Preload("Book").Find(&books)
-// 	if res.Error != nil {
-// 		return books
-// 	}
-// 	return nil
-// }
+// BookFetchAll is...
+func BookFetchAll() []Book {
+	var books []Book
+	// Get all records
+	res := database.DBConn().Find(&books)
+	if res.Error == nil {
+		return books
+	}
+	return nil
+}

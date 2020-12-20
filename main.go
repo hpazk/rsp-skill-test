@@ -2,6 +2,7 @@ package main
 
 import (
 	database "github.com/hpazk/rsp-skill-test/app/database"
+	"github.com/hpazk/rsp-skill-test/app/models"
 	router "github.com/hpazk/rsp-skill-test/app/router"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 	"github.com/labstack/echo/v4"
@@ -11,6 +12,7 @@ import (
 func main() {
 	app := echo.New()
 	db := database.DBConn()
+	db.AutoMigrate(&models.Book{})
 	defer db.Close()
 
 	app.Use(middleware.Logger())
