@@ -3,8 +3,6 @@ package handler
 import (
 	"net/http"
 
-	"github.com/hpazk/rsp-skill-test/app/database"
-	book "github.com/hpazk/rsp-skill-test/app/models"
 	user "github.com/hpazk/rsp-skill-test/app/models"
 	"github.com/labstack/echo/v4"
 )
@@ -22,12 +20,13 @@ func CreateUser(ctx echo.Context) error {
 // Test
 
 // GetBooks is...
-func GetBooks(ctx echo.Context) error {
-	db := database.DBConn
-	var books []book.Book
-	db.Find((&books))
-	return ctx.JSON(http.StatusOK, books)
-}
+// func GetBooks(ctx echo.Context) error {
+// 	db := database.DBConn
+
+// 	var books []book.Book
+// 	db.Find((&books))
+// 	return ctx.JSON(http.StatusOK, books)
+// }
 
 // // Auth is...
 // func Auth(ctx echo.Context) error {

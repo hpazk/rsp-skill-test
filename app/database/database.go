@@ -1,12 +1,12 @@
 package database
 
 import (
+	"log"
+
+	"github.com/hpazk/rsp-skill-test/app/models"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 )
-
-// DB Context
-var DB *gorm.DB
 
 // Database Initialization
 // func Database() *gorm.DB {
@@ -24,7 +24,20 @@ var DB *gorm.DB
 // 	return DB
 // }
 
-var (
-	// DBConn is...
-	DBConn *gorm.DB
-)
+// DB is...
+var DB *gorm.DB
+
+// DBConn is...
+func DBConn() *gorm.DB {
+	var err error
+	DB, err = gorm.Open("sqlite3", "books.db")
+
+	if err != nil {
+		log.Panic(err)
+	}
+	log.Println("Database Connected")
+
+	DB.AutoMigrate(&models.Book{})
+
+	return DB
+}
