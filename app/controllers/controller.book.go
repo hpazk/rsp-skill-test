@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"github.com/hpazk/rsp-skill-test/app/models"
+	"github.com/hpazk/rsp-skill-test/app/models/operation"
 	"github.com/labstack/echo/v4"
 )
 
@@ -12,7 +13,7 @@ func BookStore(ctx echo.Context) error {
 	book.Age = ctx.FormValue("age")
 	book.Address = ctx.FormValue("address")
 
-	res := models.BookInsert(&book)
+	res := operation.BookInsert(&book)
 	if res {
 		return ctx.JSON(201, book)
 	}
@@ -21,7 +22,7 @@ func BookStore(ctx echo.Context) error {
 
 // BookList is...
 func BookList(ctx echo.Context) error {
-	books := models.BookFetchAll()
+	books := operation.BookFetchAll()
 	response := models.Response{Code: 200, Message: "Success", Data: books}
 	if books != nil {
 		return ctx.JSON(200, response)

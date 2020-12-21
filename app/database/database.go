@@ -3,6 +3,7 @@ package database
 import (
 	"log"
 
+	"github.com/hpazk/rsp-skill-test/app/models"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 )
@@ -36,7 +37,11 @@ func DBConn() *gorm.DB {
 	}
 	log.Println("Database Connected")
 
-	// DB.AutoMigrate(&models.Book{})
+	DB.AutoMigrate(
+		&models.Book{},
+		&models.Room{},
+		&models.Booking{},
+	)
 
 	return DB
 }

@@ -18,6 +18,8 @@ func main() {
 	app.Use(middleware.Logger())
 	app.Use(middleware.Recover())
 
+	// app.Pre(middleware.RemoveTrailingSlash())
+
 	router.Router(app)
 
 	// server := echo.New()

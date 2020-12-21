@@ -1,16 +1,20 @@
 package models
 
-import "github.com/jinzhu/gorm"
+import (
+	"time"
+
+	"gorm.io/gorm"
+)
 
 // User struct is...
 type User struct {
-	gorm.Model
-	Email     string `json:"email" form:"email" query:"email"`
-	Password  string `json:"password" form:"password" query:"password"`
-	Photo     string `json:"photo" form:"photo" query:"photo"`
-	CreatedAt string `json:"created_at" form:"created_at" query:"created_at"`
-	UpdatedAt string `json:"updated_at" form:"updated_at" query:"updated_at"`
-	DeletedAt string `json:"deleted_at" form:"deleted_at" query:"deleted_at"`
+	ID        uint           `json:"id"`
+	Email     string         `json:"email"`
+	Password  string         `json:"password"`
+	Photo     string         `json:"photo"`
+	CreatedAt time.Time      `json:"created_at"  gorm:"time"`
+	UpdatedAt time.Time      `json:"updated_at" gorm:"time"`
+	DeletedAt gorm.DeletedAt `json:"deleted_at" gorm:"time"`
 }
 
 // // Room struct is...

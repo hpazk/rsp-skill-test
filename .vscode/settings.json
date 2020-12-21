@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "database": "${workspaceFolder:rsp-skill-test}/books.db",
+            "name": "rsp-skill-test"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
